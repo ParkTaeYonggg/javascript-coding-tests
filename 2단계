@@ -1,0 +1,24 @@
+/* 2019 KAKAO BLIND RECRUITMENT - 오픈채팅방 : 프로그레머스 */
+
+function solution(record) {
+    const answer = [];
+    const userMap = new Map();
+    record.forEach(e => {
+        const userInfo = e.split(" ");
+        if (e.includes("Enter")) {
+            userMap.set(userInfo[1], userInfo[2]);    
+        } else if (e.includes("Change")) {
+            userMap.set(userInfo[1], userInfo[2]);    
+        }
+
+    })
+    record.forEach(e => {
+        const userInfo = e.split(" ")[1];
+        if (e.includes("Enter")) {
+            answer.push(`${userMap.get(userInfo)||userInfo}님이 들어왔습니다.`);
+        } else if (e.includes("Leave")) {
+            answer.push(`${userMap.get(userInfo||userInfo)}님이 나갔습니다.`);
+        }
+    })
+    return answer;
+}
