@@ -1,0 +1,11 @@
+function solution(lottos, win_nums) {
+    let answer = [];
+const equal = lottos.filter(i => win_nums.find(k => i === k || i === 0));
+    const zero = lottos.filter(i => win_nums.find(k => i === k));
+    const calc = (e) => { 
+        const num = e.length;
+        return num === 6 ? 1 : num === 5 ? 2 : num === 4 ? 3 : num === 3 ? 4 : num === 2 ? 5 : 6;
+    }
+    
+    return [calc(equal), calc(zero)];
+}
